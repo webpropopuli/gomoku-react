@@ -1,4 +1,4 @@
-# Go-moku in React: a react trainer goes out of control.
+# Go-moku in React: a react tutorial gets out of control.
 
 This has it's roots in Dan Abramov's ridiculously awesome Tic-tac-toe demo (https://reactjs.org/tutorial/tutorial.html)
 
