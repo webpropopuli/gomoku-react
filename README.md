@@ -1,44 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Go-moku in React: a react trainer goes out of control.
 
-## Available Scripts
+This has it's roots in Dan Abramov's ridiculously awesome Tic-tac-toe demo (https://reactjs.org/tutorial/tutorial.html)
 
-In the project directory, you can run:
+If you want to get a grip on React - from one of the Gods of React - I recommend this one because it's
 
-### `npm start`
+1. awesome, and
+2. it's not a To-do app
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Dan showed us how to build the app and taught about props, state, "lifting" state and about twenty other things you should know in React.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+If you are brand new to React I seriously recommend taking half a day and going through it. Then when you need to go full-on MERN stack, you'll just have to come to terms with some Mongo and Express and there are a few good tuts on just those two.
 
-### `npm test`
+## So if Dan did all the work why are we here?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For one, I really needed to put something cool in my Github, but the main thing here is about scaling something _simple_ into something _useful_ - I'm pretty sure nobody over the age of 7 is playing tic-tac-toe for fun any more. (Except possibly these guys: https://www.arktimes.com/ArkansasBlog/archives/2012/06/11/arkansass-claim-to-fame-tick-tack-toe-playing-chickens)
 
-### `npm run build`
+## The result... Gomoku!
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That's a terrible analogy - it's more like what Aerosmith is to that band you had in high-school.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### The main challenges scaling from Tic-tac-toe(TTT) to Gomoku
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. drawing the board needs refactoring as the fixed 3x3 TTT board is now 19x19 AND it might make sense to play on different sized boards for learning or perhaps game-variants. Hard-coding in JSX three row <divs> with three <Squares> each is basic and still readable, but just moving to a 4x4 board adds another 8 lines of code; 5x5 adds 11 more to that and so on. It gets un-readable and un-manageable fast, and it's not even interesting code that gets added.
+2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design.
+3. Possibly, the logic around move-history may need a rethink, though possibly not. Still looking at this.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#TBD
+#Phases and repo branches
+##1. Initial install and code
+We started this with a generic create-react-app instance and then deleted everything in the /src directory to start somewhat from scratch. If you notice any remnants of a larger app here, it's probably c-r-a boilerplate. _You_ should just clone the repo
+##2. RefactorBoard drawing code
+This is really just some JS fiddling about but it really cleans up the board drawing code while making it work for any sized board. In a more developed app, I'd probably move the board size const to something like '.gameconfig'
+##3. Winning-game logic.
+In the 3x3 TTT board, there are only 8 possible win combinations (vertical, horizontal, diagonal) and they cover an entire edge-to-edge part of the board. Gomoku looks for five-in-a-row anwhere on a 19x19 grid. Listing all the possible wins seems like a nightmare there. (Or just something so tedious that I don't want any part of it.)
