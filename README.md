@@ -22,6 +22,46 @@ Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That
 ### The main challenges scaling from Tic-tac-toe(TTT) to Gomoku
 
 1. drawing the board needs refactoring as the fixed 3x3 TTT board is now 19x19 AND it might make sense to play on different sized boards for learning or perhaps game-variants. Hard-coding in JSX three row <divs> with three <Squares> each is basic and still readable, but just moving to a 4x4 board adds another 8 lines of code; 5x5 adds 11 more to that and so on. It gets un-readable and un-manageable fast, and it's not even interesting code that gets added.
+   We'll convert this:
+
+```
+    return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+```
+
+into this
+
+```
+    return (
+      <div>
+        <div className="status">{status}</div>
+        {rows.map(r => (
+          <div className="board-row">{r}</div>
+        ))}
+      </div>
+    );
+  }
+}
+```
+
 2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design.
 3. Possibly, the logic around move-history may need a rethink, though possibly not. Still looking at this.
 

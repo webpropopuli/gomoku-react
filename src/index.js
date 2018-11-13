@@ -47,24 +47,27 @@ class Board extends React.Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
+    /* Build a board of rowSize x rowSize. squares are numbered from 0 -> (rowSize^^2)-1
+       We create each row[] and push to rows[]
+    */
+    const rowSize = 19;
+
+    const rows = [];
+    for (let y = 0; y < rowSize; y++) {
+      let row = [];
+      for (let x = 0; x < rowSize; x++) {
+        row.push(this.renderSquare(x + y * rowSize));
+      }
+      rows.push(row);
+    }
+
+    // Draw the rowSize x rowSize board
     return (
       <div>
         <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {rows.map(r => (
+          <div className="board-row">{r}</div>
+        ))}
       </div>
     );
   }
