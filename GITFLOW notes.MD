@@ -6,4 +6,6 @@
 -push the branch
 `git push origin new-feature-name`
 -create the pull request
-go to GitHub
+go to GitHub and deal with pull
+
+NOTE: I broke something horrible so need to try again.

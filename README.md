@@ -62,7 +62,7 @@ into this
 }
 ```
 
-2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design.
+2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design. Also, let's not losr the TTT logic.
 3. Possibly, the logic around move-history may need a rethink, though possibly not. Still looking at this.
 
 #TBD
@@ -70,6 +70,6 @@ into this
 ##1. Initial install and code
 We started this with a generic create-react-app instance and then deleted everything in the /src directory to start somewhat from scratch. If you notice any remnants of a larger app here, it's probably c-r-a boilerplate. _You_ should just clone the repo
 ##2. RefactorBoard drawing code
-This is really just some JS fiddling about but it really cleans up the board drawing code while making it work for any sized board. In a more developed app, I'd probably move the board size const to something like '.gameconfig'
+This is really just some JS fiddling but it really cleans up the board drawing code while making it work for any sized board. In a more developed app, I'd probably move the board size const to something like '.gameconfig'
 ##3. Winning-game logic.
 In the 3x3 TTT board, there are only 8 possible win combinations (vertical, horizontal, diagonal) and they cover an entire edge-to-edge part of the board. Gomoku looks for five-in-a-row anwhere on a 19x19 grid. Listing all the possible wins seems like a nightmare there. (Or just something so tedious that I don't want any part of it.)
