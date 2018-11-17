@@ -1,4 +1,5 @@
 # Go-moku in React: a react tutorial gets out of control.
+run it: https://webpropopuli.github.io/gomoku-react/
 
 This has it's roots in Dan Abramov's ridiculously awesome Tic-tac-toe demo (https://reactjs.org/tutorial/tutorial.html)
 
