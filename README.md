@@ -3,10 +3,9 @@ run it: https://webpropopuli.github.io/gomoku-react/
 
 This has it's roots in Dan Abramov's ridiculously awesome Tic-tac-toe demo (https://reactjs.org/tutorial/tutorial.html)
 
-If you want to get a grip on React - from one of the Gods of React - I recommend this one because it's
-
-1. awesome, and
-2. it's not a To-do app
+Not that tic=tac=toe is fascinating but Dan explaining React is. If you want to get a grip on React - from one of the Gods of React - I recommend this one because it's
+   1. awesome, and
+   2. it's not a To-do app
 
 Dan showed us how to build the app and taught about props, state, "lifting" state and about twenty other things you should know in React.
 
