@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/gomoku-react/precache-manifest.768b0fb634101d19b1074bedf4b662f7.js"
+  "/gomoku-react/precache-manifest.10975b93332c16d04a43a9fd0359bf9d.js"
 );
 
 workbox.clientsClaim();
