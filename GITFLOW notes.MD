@@ -8,4 +8,4 @@
 -create the pull request
 go to GitHub and deal with pull
 
-NOTE: I broke something horrible so need to try again.
+NOTE: IF you only see a 3x3 board, you have to change the boardsize settings.
