@@ -1,15 +1,15 @@
 # Go-moku in React: a react tutorial gets out of control.
+
 run it: https://webpropopuli.github.io/gomoku-react/
 
 This has it's roots in Dan Abramov's ridiculously awesome Tic-tac-toe demo (https://reactjs.org/tutorial/tutorial.html)
 
-Not that tic=tac=toe is fascinating but Dan explaining React is. If you want to get a grip on React - from one of the Gods of React - I recommend this one because it's
-   1. awesome, and
-   2. it's not a To-do app
+Not because tic-tac-toe is fascinating but because Dan explaining React is. If you want to get a grip on React - from one of the Gods of React - I recommend this one because it's
 
-Dan showed us how to build the app and taught about props, state, "lifting" state and about twenty other things you should know in React.
+1.  awesome, and
+2.  it's not a To-do app
 
-If you are brand new to React I seriously recommend taking half a day and going through it. Then when you need to go full-on MERN stack, you'll just have to come to terms with some Mongo and Express and there are a few good tuts on just those two.
+Dan showed us how to build the app and taught about props, state, "lifting" state and about twenty other things you should know. If you are brand new to React I seriously recommend taking half a day and going through it. Then when you need to go full-on MERN stack, you'll just have to come to terms with some Mongo and Express and there are a few good tuts on just those two.
 
 ## So if Dan did all the work why are we here?
 
@@ -22,12 +22,11 @@ Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That
 ### The main challenges scaling from Tic-tac-toe(TTT) to Gomoku
 
 1. drawing the board needs refactoring as the fixed 3x3 TTT board is now 19x19 AND it might make sense to play on different sized boards for learning or perhaps game-variants. Hard-coding in JSX three row <divs> with three <Squares> each is basic and still readable, but just moving to a 4x4 board adds another 8 lines of code; 5x5 adds 11 more to that and so on. It gets un-readable and un-manageable fast, and it's not even interesting code that gets added.
-   We'll convert this:
+   We'll convert this (which is hard-coded for 3x3):
 
 ```
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -47,12 +46,24 @@ Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That
     );
 ```
 
-into this
+into this which works for any size grid
 
 ```
+    //build the board initially
+    const rowSize = 19;
+
+    const rows = [];
+    for (let y = 0; y < rowSize; y++) {
+      let row = [];
+      for (let x = 0; x < rowSize; x++) {
+        row.push(this.renderSquare(x + y * rowSize));
+      }
+      rows.push(row);
+    }
+
+    // RENDER() THE BOARD
     return (
       <div>
-        <div className="status">{status}</div>
         {rows.map(r => (
           <div className="board-row">{r}</div>
         ))}
@@ -61,6 +72,8 @@ into this
   }
 }
 ```
+
+Plus show the code on the
 
 2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design. Also, let's not losr the TTT logic.
 3. Possibly, the logic around move-history may need a rethink, though possibly not. Still looking at this.
