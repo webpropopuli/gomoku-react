@@ -17,12 +17,12 @@ For one, I really needed to put something cool in my Github, but the main thing 
 
 ## The result... Gomoku!
 
-Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That's a terrible analogy - it's more like what Aerosmith is to that band you had in high-school.
+Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. If that's unclear, it's more like what Aerosmith is to that band you had in high-school.
 
 ### The main challenges scaling from Tic-tac-toe(TTT) to Gomoku
 
-1. drawing the board needs refactoring as the fixed 3x3 TTT board is now 19x19 AND it might make sense to play on different sized boards for learning or perhaps game-variants. Hard-coding in JSX three row <divs> with three <Squares> each is basic and still readable, but just moving to a 4x4 board adds another 8 lines of code; 5x5 adds 11 more to that and so on. It gets un-readable and un-manageable fast, and it's not even interesting code that gets added.
-   We'll convert this (which is hard-coded for 3x3):
+1. Drawing the board needs refactoring as the fixed 3x3 TTT board is now 19x19 AND it might make sense to play on different sized boards for learning or perhaps game-variants. Hard-coding in JSX three row <divs> with three <Squares> each is basic and still readable, but just moving to a 4x4 board adds another 8 lines of code; 5x5 adds 11 more to that and so on. It gets un-readable and un-manageable fast, and it's not even interesting code that gets added.
+   We'll convert this (hard-coded for 3x3):
 
 ```
     return (
@@ -46,7 +46,7 @@ Gomoku is to tic-tac-toe what Chess is to Checkers, or what Go is to Chess. That
     );
 ```
 
-into this which works for any size grid
+into this which works for any size grid:
 
 ```
     //build the board initially
@@ -75,14 +75,14 @@ into this which works for any size grid
 
 Plus show the code on the
 
-2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design. Also, let's not losr the TTT logic.
+2. The logic to check for won positions will not scale from the TTT logic, so this needs a total re-design. Also, let's not lose the TTT logic.
 3. Possibly, the logic around move-history may need a rethink, though possibly not. Still looking at this.
 
 #TBD
 #Phases and repo branches
 ##1. Initial install and code
-We started this with a generic create-react-app instance and then deleted everything in the /src directory to start somewhat from scratch. If you notice any remnants of a larger app here, it's probably c-r-a boilerplate. _You_ should just clone the repo
+We started this with a generic create-react-app instance and then deleted everything in the /src directory to start somewhat from scratch. If you notice any remnants of a larger app here, it's probably c-r-a boilerplate. _You_ should just clone my repo
 ##2. RefactorBoard drawing code
 This is really just some JS fiddling but it really cleans up the board drawing code while making it work for any sized board. In a more developed app, I'd probably move the board size const to something like '.gameconfig'
-##3. Winning-game logic.
+##3. 2do: Winning-game logic.
 In the 3x3 TTT board, there are only 8 possible win combinations (vertical, horizontal, diagonal) and they cover an entire edge-to-edge part of the board. Gomoku looks for five-in-a-row anwhere on a 19x19 grid. Listing all the possible wins seems like a nightmare there. (Or just something so tedious that I don't want any part of it.)
